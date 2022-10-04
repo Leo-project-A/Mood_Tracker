@@ -7,12 +7,12 @@ import csv
 
 HEADERS = ['logID', 'date', 'time', 'overall feeling', 'anxiety level', 'mood', 'exercise', 'reading', 'health', 'phone use/social media']
 OVERALL_RATES = ["1", "2", "3", "4", "5"]
-ANXIETY_RATES = ["None", "low", "moderate", "HIGH"]
+ANXIETY_RATES = ["none", "low", "moderate", "high"]
 MOOD_RATES = [":D", ":)", ":|", "):", "D;"]
-EXERCISE_RATES = ["none", "workout", "15 min walk", "bouldering", "surf", "weights"]
+EXERCISE_RATES = ["none", "15 min walk", "bouldering", "surf", "ski", "jogging", "weights", "boxing", "yoga", "crossfit"]
 READING_RATES = ["0", "1-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100", "100+"]
-HEALTH_RATES = ["Healthy", "mild symptoms", "sickness", "severe sickness"]
-PHONE_RATES = ["EXTREME", "too much", "moderate", "safe use", "detox"]
+HEALTH_RATES = ["healthy", "mild symptoms", "sickness", "severe sickness"]
+PHONE_RATES = ["extreme", "too much", "moderate", "safe use", "detox"]
 
 def generate_id() -> str:
     return "".join(random.choices(string.hexdigits, k= 16))
@@ -101,7 +101,6 @@ def dump_log(logObj: Log, filepath: str) -> None:
                 logObj.reading,
                 logObj.health,
                 logObj.phone]) + '\n')
-        print(f"log {logObj._id} dumped!")
     except Exception as e:
         print(f"failed to load log {logObj._id}")
         raise e
